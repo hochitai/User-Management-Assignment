@@ -15,8 +15,11 @@ namespace UserManagementAPI
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            // Use Memory database
+            // builder.Services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase("UserDb"));
 
-            builder.Services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase("UserDb"));
+            // Use SQL Server
+            builder.Services.AddDbContext<ApiContext>(opt => opt.UseSqlServer("Server=LAPTOP-R0O4HMIF;Database=Management;Trusted_Connection=True;TrustServerCertificate=True;"));
 
             builder.Services.AddControllers();
 
